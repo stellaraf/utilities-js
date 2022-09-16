@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@sindresorhus/is': ^4.6.0
-  '@stellaraf/eslint-config': ^1.1.1
+  '@stellaraf/eslint-config': ^1.1.2
   '@stellaraf/jest': ^1.0.0
   '@types/jest': ^29.0.2
   '@types/node': ^18.7.18
@@ -22,7 +22,7 @@ dependencies:
   merge-anything: 4.0.5
 
 devDependencies:
-  '@stellaraf/eslint-config': 1.1.1_prdxvwpqz7ols7qpi4wzmubrfu
+  '@stellaraf/eslint-config': 1.1.2_prdxvwpqz7ols7qpi4wzmubrfu
   '@stellaraf/jest': 1.0.0
   '@types/jest': 29.0.2
   '@types/node': 18.7.18
@@ -774,8 +774,8 @@ packages:
       '@sinonjs/commons': 1.8.3
     dev: true
 
-  /@stellaraf/eslint-config/1.1.1_prdxvwpqz7ols7qpi4wzmubrfu:
-    resolution: {integrity: sha512-l24xjempsV5J7SFj3hXOWeZkpCja/mv/v3HwlxkBIE4bnRBtcda8jaVz/+4VuJa+JuznjD0KiOIMC8sEL79Plw==}
+  /@stellaraf/eslint-config/1.1.2_prdxvwpqz7ols7qpi4wzmubrfu:
+    resolution: {integrity: sha512-KYIQpmUl6q8zSsbHs88hk51mYNRXhIUAMJLcMjHw8T3426S+RT/1nsV4O/R7UMueIYaRnMSXgwxsP35q0x7JJg==}
     peerDependencies:
       eslint: ^8.23.1
       prettier: ^2.7.1
