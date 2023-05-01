@@ -4,8 +4,8 @@
   <br/>
   <h3>Stellar JS Utilities</h3>
   <br/>
-  <a href="https://github.com/stellaraf/utilities-js/actions?query=workflow%3ATests">
-    <img src="https://img.shields.io/github/workflow/status/stellaraf/utilities-js/Tests?color=%239100fa&event=push&style=for-the-badge" />
+  <a href="https://github.com/stellaraf/utilities-js/actions/workflows/tests.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/stellaraf/utilities-js/tests.yml?branch=main&color=%239100fa&event=push&style=for-the-badge" />
   </a>
   <br/>
   <br/>
