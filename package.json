@@ -1,13 +1,27 @@
 {
   "name": "@stellaraf/utilities",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "author": "Matt Love <matt@stellar.tech>",
   "license": "BSD-3-Clause",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./*": {
+      "require": "./dist/cjs/*.js",
+      "import": "./dist/esm/*.js"
+    }
+  },
   "files": [
-    "dist/**/*"
+    "dist/",
+    "esm/"
   ],
   "publishConfig": {
     "access": "public"
@@ -34,9 +48,7 @@
     "lint": "eslint --quiet src/**/*",
     "format": "prettier --loglevel warn -c .",
     "typecheck": "tsc --build",
-    "build:js": "ts-node-esm build.ts",
-    "build:ts": "tsc",
-    "build": "pnpm run build:js && pnpm run build:ts",
+    "build": "ts-node-esm build.ts && tsc --emitDeclarationOnly",
     "test": "NODE_OPTIONS=\"--experimental-vm-modules --no-warnings\" jest"
   },
   "eslintConfig": {
