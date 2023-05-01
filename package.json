@@ -55,7 +55,12 @@
     "root": true,
     "extends": [
       "@stellaraf"
-    ]
+    ],
+    "rules": {
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/no-inferrable-types": "off",
+      "@typescript-eslint/no-unnecessary-type-constraint": "off"
+    }
   },
   "prettier": {
     "printWidth": 100,
