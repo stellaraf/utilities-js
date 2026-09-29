@@ -4,7 +4,7 @@ on: [push, pull_request]
 jobs:
   tests:
     name: Tests
-    runs-on: codebuild-stellaraf-actions-public-${{ github.run_id }}-${{ github.run_attempt }}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -20,29 +20,12 @@ jobs:
         run: |
           echo "path=$(pnpm store path --silent)" >> "$GITHUB_OUTPUT"
           echo "node=$(node --version)" >> "$GITHUB_OUTPUT"
-      - name: Export temporary AWS cache credentials
-        shell: bash
-        run: |
-          python3 - <<'PYTHON'
-          import json, os, subprocess
-          credentials = json.loads(subprocess.check_output(['aws', 'configure', 'export-credentials', '--format', 'process']))
-          with open(os.environ['GITHUB_ENV'], 'a') as output:
-              for source, target in [('AccessKeyId', 'AWS_ACCESS_KEY_ID'), ('SecretAccessKey', 'AWS_SECRET_ACCESS_KEY'), ('SessionToken', 'AWS_SESSION_TOKEN')]:
-                  value = credentials[source]
-                  if not value or '\n' in value or '\r' in value:
-                      raise RuntimeError('Invalid temporary credential value')
-                  print('::add-mask::' + value)
-                  output.write(target + '=' + value + '\n')
-          PYTHON
-      - name: Restore pnpm download store from S3
-        uses: tespkg/actions-cache@e07e2d4953dc8c020d447363e5064e36d04f3cf9
+      - name: Restore pnpm download store
+        uses: actions/cache@v4
         with:
-          region: us-west-1
-          bucket: stellaraf-public-ci-961341522852-us-west-1
           path: ${{ steps.ci-pnpm-cache.outputs.path }}
           key: cache/${{ github.repository }}/${{ github.ref }}/pnpm-8.15.9/${{ runner.os }}/${{ runner.arch }}/${{ steps.ci-pnpm-cache.outputs.node }}/${{ 
             hashFiles('pnpm-lock.yaml') }}
-          use-fallback: false
       - name: Install Dependencies
         run: pnpm install
       - name: Lint
